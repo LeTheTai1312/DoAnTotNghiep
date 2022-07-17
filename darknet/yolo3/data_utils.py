@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 
 def order_points(coordinates):
     rect = np.zeros((4, 2), dtype="float32")
@@ -59,3 +60,14 @@ def convert2Square(image):
         squared_image = image
 
     return squared_image
+
+def draw_labels_and_boxes(image, labels, boxes):
+    x_min = round(boxes[0])
+    y_min = round(boxes[1])
+    x_max = round(boxes[0] + boxes[2])
+    y_max = round(boxes[1] + boxes[3])
+
+    image = cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (255, 0, 255), thickness=2)
+    image = cv2.putText(image, labels, (x_min - 35, y_min + 100), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.75, color=(0, 255, 0), thickness=2)
+
+    return image

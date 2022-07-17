@@ -10,7 +10,7 @@ arr = os.listdir('C:\\Users\\Admin\\Desktop\\yolo\\darknet\\yolo3\\data_char\\x3
 for a in arr:
     img = cv2.imread('C:\\Users\\Admin\\Desktop\\yolo\\darknet\\yolo3\\data_char\\x3\\'+a)
     img2 = imutils.resize(img, width=100)
-    print(a)
+    print(a + '--' + str(len(os.listdir('C:\\Users\\Admin\\Desktop\\yolo\\darknet\\yolo3\\data_char\\x3'))))
     cv2.imshow(a, img2)
     
     b = cv2.waitKey(0) % 256
